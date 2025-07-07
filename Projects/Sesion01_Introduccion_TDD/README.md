@@ -1,9 +1,11 @@
-# Sesion01 Introduccion TDD
+# Introduction to TDD and Clean Code, Basic TDD + Best Practices
 
-## Objetivo
-Proyecto base para la Sesion01 Introduccion TDD.
+## Objetive
 
-## Actividades sugeridas
-- Revisar ExampleController
-- Ejecutar test unitario
-- Extender funcionalidad
+Base project for introductory session
+
+## Suggested activities
+
+* Run and review ExampleController
+* Run unit test
+* Extend test funcionality
