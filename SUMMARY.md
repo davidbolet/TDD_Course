@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Test Driven Development Course](README.md)
+* [Test-Driven Development & Clean Code](README.md)
 * [Course: Test-Driven Development (TDD) and Clean Code](course_index.md)
 * [Projects](projects/README.md)
   * [Introduction to TDD and Clean Code, Basic TDD + Best Practices](Projects/Sesion01_Introduccion_TDD/README.md)

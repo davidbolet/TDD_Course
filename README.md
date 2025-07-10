@@ -1,7 +1,6 @@
 ---
-description: July 2025 David Bolet
+description: JUnit 5, Spring Boot, CI/CD, Pact, Kafka
 ---
 
-# Test Driven Development Course
+# Test-Driven Development & Clean Code
 
-This is a TDD Course for imagina formacion. Check the [Course index](course_index.md)
