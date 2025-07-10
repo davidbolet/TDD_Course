@@ -2,7 +2,6 @@
 
 **Dates:** July 14 to 25 (Monday to Friday)  
 **Total Duration:** 25 hours (2.5 hours per session)  
-**Schedule:** 08:15 to 10:45  
 **Sessions:** 10 
 **Format:** Theory and practice with exercises and a final mini-project
 
