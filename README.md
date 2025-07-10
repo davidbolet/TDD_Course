@@ -1,4 +1,7 @@
-# TDD_Course
+---
+description: July 2025 David Bolet
+---
 
-This is a TDD Course for imagina formacion.
-Check the [Course index](/course_index.md)
+# Test Driven Development Course
+
+This is a TDD Course for imagina formacion. Check the [Course index](course_index.md)
