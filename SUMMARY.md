@@ -2,7 +2,7 @@
 
 * [Test-Driven Development & Clean Code](README.md)
 * [Course: Test-Driven Development (TDD) and Clean Code](course_index.md)
-* [Projects](projects/README.md)
+* [Sections](projects/README.md)
   * [Introduction to TDD and Clean Code, Basic TDD + Best Practices](Projects/Sesion01_Introduccion_TDD/README.md)
   * [Test Architecture in Spring Boot](Projects/Sesion02_TDD_Basico/README.md)
   * [REST API Testing](Projects/Sesion03_Arquitectura_Tests/README.md)
