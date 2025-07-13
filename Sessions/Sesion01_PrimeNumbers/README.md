@@ -1,9 +1,5 @@
-# Sesion01 Introduccion TDD
+# Sesion01 TDD introduction
 
-## Objetivo
-Proyecto base para la Sesion01 Introduccion TDD.
+## Objetive
+Prime numbers TDD Kata
 
-## Actividades sugeridas
-- Revisar ExampleController
-- Ejecutar test unitario
-- Extender funcionalidad
