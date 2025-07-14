@@ -33,8 +33,7 @@ the first line is optional. all existing scenarios should still be supported
 ————————————————————————————————
 Calling Add with a negative number will throw an exception “negatives not allowed” - and the negative that was passed. 
 if there are multiple negatives, show all of them in the exception message.
-————————————————————————————————
-STOP HERE if you are a beginner. Continue if you can finish the steps so far in less than 30 minutes.
+
 ————————————————————————————————
 Numbers bigger than 1000 should be ignored, so adding 2 + 1001 = 2
 ————————————————————————————————
