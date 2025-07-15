@@ -15,7 +15,15 @@ public class FizzBuzz {
     }
 
 	public static String convert(int number) {
-		throw new UnsupportedOperationException("FizzBuzz logic not implemented yet");
-		// This method is a placeholder and should be implemented to return the correct FizzBuzz
+		if (number % 3 == 0 && number % 5 == 0) {
+			return "FizzBuzz";
+		}
+		if (number % 3 == 0) {
+			return "Fizz";
+		}
+		if (number % 5 == 0) {
+			return "Buzz";
+		}
+		return String.valueOf(number); // Default implementation, replace with actual logic.
 	}
 }

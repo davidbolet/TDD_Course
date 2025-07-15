@@ -1,0 +1,225 @@
+{
+  "info": {
+    "_postman_id": "b1b2b3b4-b5b6-b7b8-b9ba-bbcbdbebfbfc",
+    "name": "BookService API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Colección de ejemplos para probar el microservicio de librería."
+  },
+  "item": [
+    {
+      "name": "Crear libro",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"The Lord of the Rings\",\n  \"author\": \"J.R.R. Tolkien\",\n  \"isbn\": \"9788445071405\",\n  \"description\": \"Epic fantasy\",\n  \"price\": 29.99,\n  \"stock\": 50,\n  \"category\": \"FANTASY\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/books",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "books"]
+        }
+      }
+    },
+    {
+      "name": "Obtener libro por ID",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/books/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "books", "1"]
+        }
+      }
+    },
+    {
+      "name": "Listar todos los libros",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/books",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "books"]
+        }
+      }
+    },
+    {
+      "name": "Buscar libros por título",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/books/title/Rings",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "books", "title", "Rings"]
+        }
+      }
+    },
+    {
+      "name": "Buscar libros por autor",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/books/author/Tolkien",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "books", "author", "Tolkien"]
+        }
+      }
+    },
+    {
+      "name": "Buscar libros por categoría",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/books/category/FANTASY",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "books", "category", "FANTASY"]
+        }
+      }
+    },
+    {
+      "name": "Actualizar stock de un libro",
+      "request": {
+        "method": "PATCH",
+        "url": {
+          "raw": "http://localhost:8080/api/books/1/stock?stock=25",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "books", "1", "stock"],
+          "query": [
+            { "key": "stock", "value": "25" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Eliminar libro",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "http://localhost:8080/api/books/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "books", "1"]
+        }
+      }
+    },
+    {
+      "name": "Consultar categorías disponibles",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/books/categories",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "books", "categories"]
+        }
+      }
+    },
+    {
+      "name": "Verificar existencia por ISBN",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/books/exists/9788445071405",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "books", "exists", "9788445071405"]
+        }
+      }
+    },
+    {
+      "name": "Buscar libros por texto",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/books/search?q=Tolkien",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "books", "search"],
+          "query": [
+            { "key": "q", "value": "Tolkien" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Obtener libros con stock",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/books/in-stock",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "books", "in-stock"]
+        }
+      }
+    },
+    {
+      "name": "Obtener libros sin stock",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/books/out-of-stock",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "books", "out-of-stock"]
+        }
+      }
+    },
+    {
+      "name": "Ejemplo de error de validación",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"\",\n  \"author\": \"\",\n  \"isbn\": \"\",\n  \"description\": \"\",\n  \"price\": -1,\n  \"stock\": -5,\n  \"category\": \"\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/books",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "books"]
+        }
+      }
+    },
+    {
+      "name": "Ejemplo de libro no encontrado",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/books/9999",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "books", "9999"]
+        }
+      }
+    }
+  ]
+} 
