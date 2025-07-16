@@ -16,7 +16,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -31,31 +34,25 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@ExtendWith(MockitoExtension.class)
-@DisplayName("Book Controller Tests")
+@WebMvcTest(BookController.class)
+@DisplayName("Book Controller Tests with WebMvcTest")
 class BookControllerTest {
     
-    @Mock
+    @MockitoBean
     private BookService bookService;
-    
-    @InjectMocks
-    private BookController bookController;
-    
+
+    @Autowired
     private MockMvc mockMvc;
+
     private ObjectMapper objectMapper;
-    
     private BookRequest bookRequest;
     private BookResponse bookResponse;
     private Book book;
-    
+
     @BeforeEach
     void setUp() {
-        mockMvc = MockMvcBuilders.standaloneSetup(bookController)
-                .setControllerAdvice(new GlobalExceptionHandler())
-                .build();
-        
         objectMapper = new ObjectMapper();
-        
+
         bookRequest = new BookRequest(
             "Test Book",
             "Test Author",
@@ -65,7 +62,7 @@ class BookControllerTest {
             10,
             BookCategory.FICTION
         );
-        
+
         book = new Book(
             "Test Book",
             "Test Author",
@@ -76,7 +73,7 @@ class BookControllerTest {
             BookCategory.FICTION
         );
         book.setId(1L);
-        
+
         bookResponse = new BookResponse(book);
     }
     

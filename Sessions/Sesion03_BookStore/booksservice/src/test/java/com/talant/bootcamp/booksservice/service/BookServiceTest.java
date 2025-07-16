@@ -71,7 +71,22 @@ class BookServiceTest {
 		@Test
 		@DisplayName("Should create a book successfully")
 		void shouldCreateBook() {
+			//Arrange
+			when(bookRepository.existsByIsbn(bookRequest.getIsbn())).thenReturn(false);
+			when(bookRepository.save(any(Book.class))).thenReturn(book);
+			
+			//Act
+			BookResponse createdBook = bookService.createBook(bookRequest);
 
+			//Assert
+			assertNotNull(createdBook);
+			assertEquals(bookRequest.getTitle(), createdBook.getTitle());
+			assertEquals(bookRequest.getAuthor(), createdBook.getAuthor());
+			assertEquals(bookRequest.getIsbn(), createdBook.getIsbn());
+			assertEquals(bookRequest.getDescription(), createdBook.getDescription());
+			verify(bookRepository, times(1)).existsByIsbn(bookRequest.getIsbn());
+			verify(bookRepository, times(1)).save(any(Book.class));
+			
 		}
 	
 	}
