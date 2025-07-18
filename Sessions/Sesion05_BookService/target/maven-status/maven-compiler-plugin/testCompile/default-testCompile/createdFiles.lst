@@ -1,0 +1,5 @@
+com/talant/bootcamp/booksservice/integration/SecondBookIntegrationTest.class
+com/talant/bootcamp/booksservice/repository/BookRepositoryTest.class
+com/talant/bootcamp/booksservice/service/BookServiceTest.class
+com/talant/bootcamp/booksservice/controller/BookControllerTest.class
+com/talant/bootcamp/booksservice/integration/BookIntegrationTest.class

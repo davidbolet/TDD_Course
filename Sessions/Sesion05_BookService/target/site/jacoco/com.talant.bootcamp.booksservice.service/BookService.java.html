@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BookService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">booksservice</a> &gt; <a href="index.source.html" class="el_package">com.talant.bootcamp.booksservice.service</a> &gt; <span class="el_source">BookService.java</span></div><h1>BookService.java</h1><pre class="source lang-java linenums">package com.talant.bootcamp.booksservice.service;
+
+import com.talant.bootcamp.booksservice.dto.BookRequest;
+import com.talant.bootcamp.booksservice.dto.BookResponse;
+import com.talant.bootcamp.booksservice.exception.BookNotFoundException;
+import com.talant.bootcamp.booksservice.exception.DuplicateIsbnException;
+import com.talant.bootcamp.booksservice.model.Book;
+import com.talant.bootcamp.booksservice.model.BookCategory;
+import com.talant.bootcamp.booksservice.repository.BookRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+/**
+ * Service class for the Book model
+ */
+@Service
+@Transactional
+public class BookService {
+    
+    private final BookRepository bookRepository;
+    
+    @Autowired
+<span class="fc" id="L29">    public BookService(BookRepository bookRepository) {</span>
+<span class="fc" id="L30">        this.bookRepository = bookRepository;</span>
+<span class="fc" id="L31">    }</span>
+    
+    /**
+     * Create a new book
+     */
+    public BookResponse createBook(BookRequest bookRequest) {
+        // Check if a book with the same ISBN already exists
+<span class="fc bfc" id="L38" title="All 2 branches covered.">        if (bookRepository.existsByIsbn(bookRequest.getIsbn())) {</span>
+<span class="fc" id="L39">            throw new DuplicateIsbnException(bookRequest.getIsbn());</span>
+        }
+        
+<span class="fc" id="L42">        Book book = new Book(</span>
+<span class="fc" id="L43">            bookRequest.getTitle(),</span>
+<span class="fc" id="L44">            bookRequest.getAuthor(),</span>
+<span class="fc" id="L45">            bookRequest.getIsbn(),</span>
+<span class="fc" id="L46">            bookRequest.getDescription(),</span>
+<span class="fc" id="L47">            bookRequest.getPrice(),</span>
+<span class="fc" id="L48">            bookRequest.getStock(),</span>
+<span class="fc" id="L49">            bookRequest.getCategory()</span>
+        );
+        
+<span class="fc" id="L52">        Book savedBook = bookRepository.save(book);</span>
+<span class="fc" id="L53">        return new BookResponse(savedBook);</span>
+    }
+    
+    /**
+     * Get all books
+     */
+    @Transactional(readOnly = true)
+    public List&lt;BookResponse&gt; getAllBooks() {
+<span class="fc" id="L61">        return bookRepository.findAll()</span>
+<span class="fc" id="L62">                .stream()</span>
+<span class="fc" id="L63">                .map(BookResponse::new)</span>
+<span class="fc" id="L64">                .collect(Collectors.toList());</span>
+    }
+    
+    /**
+     * Get a book by ID
+     */
+    @Transactional(readOnly = true)
+    public BookResponse getBookById(Long id) {
+<span class="fc" id="L72">        Book book = bookRepository.findById(id)</span>
+<span class="fc" id="L73">                .orElseThrow(() -&gt; new BookNotFoundException(id));</span>
+<span class="fc" id="L74">        return new BookResponse(book);</span>
+    }
+    
+    /**
+     * Get a book by ISBN
+     */
+    @Transactional(readOnly = true)
+    public BookResponse getBookByIsbn(String isbn) {
+<span class="fc" id="L82">        Book book = bookRepository.findByIsbn(isbn)</span>
+<span class="fc" id="L83">                .orElseThrow(() -&gt; new BookNotFoundException(&quot;ISBN&quot;, isbn));</span>
+<span class="fc" id="L84">        return new BookResponse(book);</span>
+    }
+    
+    /**
+     * Update a book
+     */
+    public BookResponse updateBook(Long id, BookRequest bookRequest) {
+<span class="fc" id="L91">        Book existingBook = bookRepository.findById(id)</span>
+<span class="fc" id="L92">                .orElseThrow(() -&gt; new BookNotFoundException(id));</span>
+        
+        // Check if the new ISBN already exists in another book
+<span class="fc" id="L95">        Optional&lt;Book&gt; bookWithSameIsbn = bookRepository.findByIsbn(bookRequest.getIsbn());</span>
+<span class="pc bpc" id="L96" title="3 of 4 branches missed.">        if (bookWithSameIsbn.isPresent() &amp;&amp; !bookWithSameIsbn.get().getId().equals(id)) {</span>
+<span class="nc" id="L97">            throw new DuplicateIsbnException(bookRequest.getIsbn());</span>
+        }
+        
+        // Update fields
+<span class="fc" id="L101">        existingBook.setTitle(bookRequest.getTitle());</span>
+<span class="fc" id="L102">        existingBook.setAuthor(bookRequest.getAuthor());</span>
+<span class="fc" id="L103">        existingBook.setIsbn(bookRequest.getIsbn());</span>
+<span class="fc" id="L104">        existingBook.setDescription(bookRequest.getDescription());</span>
+<span class="fc" id="L105">        existingBook.setPrice(bookRequest.getPrice());</span>
+<span class="fc" id="L106">        existingBook.setStock(bookRequest.getStock());</span>
+<span class="fc" id="L107">        existingBook.setCategory(bookRequest.getCategory());</span>
+        
+<span class="fc" id="L109">        Book updatedBook = bookRepository.save(existingBook);</span>
+<span class="fc" id="L110">        return new BookResponse(updatedBook);</span>
+    }
+    
+    /**
+     * Delete a book
+     */
+    public void deleteBook(Long id) {
+<span class="fc bfc" id="L117" title="All 2 branches covered.">        if (!bookRepository.existsById(id)) {</span>
+<span class="fc" id="L118">            throw new BookNotFoundException(id);</span>
+        }
+<span class="fc" id="L120">        bookRepository.deleteById(id);</span>
+<span class="fc" id="L121">    }</span>
+    
+    /**
+     * Find books by author
+     */
+    @Transactional(readOnly = true)
+    public List&lt;BookResponse&gt; getBooksByAuthor(String author) {
+<span class="fc" id="L128">        return bookRepository.findByAuthorContainingIgnoreCase(author)</span>
+<span class="fc" id="L129">                .stream()</span>
+<span class="fc" id="L130">                .map(BookResponse::new)</span>
+<span class="fc" id="L131">                .collect(Collectors.toList());</span>
+    }
+    
+    /**
+    * Find books by title
+     */
+    @Transactional(readOnly = true)
+    public List&lt;BookResponse&gt; getBooksByTitle(String title) {
+<span class="fc" id="L139">        return bookRepository.findByTitleContainingIgnoreCase(title)</span>
+<span class="fc" id="L140">                .stream()</span>
+<span class="fc" id="L141">                .map(BookResponse::new)</span>
+<span class="fc" id="L142">                .collect(Collectors.toList());</span>
+    }
+    
+    /**
+     * Find books by category
+     */
+    @Transactional(readOnly = true)
+    public List&lt;BookResponse&gt; getBooksByCategory(BookCategory category) {
+<span class="fc" id="L150">        return bookRepository.findByCategory(category)</span>
+<span class="fc" id="L151">                .stream()</span>
+<span class="fc" id="L152">                .map(BookResponse::new)</span>
+<span class="fc" id="L153">                .collect(Collectors.toList());</span>
+    }
+    
+    /**
+     * Find books with stock available
+     */
+    @Transactional(readOnly = true)
+    public List&lt;BookResponse&gt; getBooksWithStock() {
+<span class="fc" id="L161">        return bookRepository.findByStockGreaterThan(0)</span>
+<span class="fc" id="L162">                .stream()</span>
+<span class="fc" id="L163">                .map(BookResponse::new)</span>
+<span class="fc" id="L164">                .collect(Collectors.toList());</span>
+    }
+    
+    /**
+     * Find books without stock
+     */
+    @Transactional(readOnly = true)
+    public List&lt;BookResponse&gt; getBooksOutOfStock() {
+<span class="fc" id="L172">        return bookRepository.findByStockEquals(0)</span>
+<span class="fc" id="L173">                .stream()</span>
+<span class="fc" id="L174">                .map(BookResponse::new)</span>
+<span class="fc" id="L175">                .collect(Collectors.toList());</span>
+    }
+    
+    /**
+     * Find books by price range
+     */
+    @Transactional(readOnly = true)
+    public List&lt;BookResponse&gt; getBooksByPriceRange(BigDecimal minPrice, BigDecimal maxPrice) {
+<span class="nc" id="L183">        return bookRepository.findByPriceBetween(minPrice, maxPrice)</span>
+<span class="nc" id="L184">                .stream()</span>
+<span class="nc" id="L185">                .map(BookResponse::new)</span>
+<span class="nc" id="L186">                .collect(Collectors.toList());</span>
+    }
+    
+    /**
+     * Find books by maximum price
+     */
+    @Transactional(readOnly = true)
+    public List&lt;BookResponse&gt; getBooksByMaxPrice(BigDecimal maxPrice) {
+<span class="nc" id="L194">        return bookRepository.findByPriceLessThanEqual(maxPrice)</span>
+<span class="nc" id="L195">                .stream()</span>
+<span class="nc" id="L196">                .map(BookResponse::new)</span>
+<span class="nc" id="L197">                .collect(Collectors.toList());</span>
+    }
+    
+    /**
+     * Find books by minimum price
+     */
+    @Transactional(readOnly = true)
+    public List&lt;BookResponse&gt; getBooksByMinPrice(BigDecimal minPrice) {
+<span class="nc" id="L205">        return bookRepository.findByPriceGreaterThanEqual(minPrice)</span>
+<span class="nc" id="L206">                .stream()</span>
+<span class="nc" id="L207">                .map(BookResponse::new)</span>
+<span class="nc" id="L208">                .collect(Collectors.toList());</span>
+    }
+    
+    /**
+     * Find books with low stock
+     */
+    @Transactional(readOnly = true)
+    public List&lt;BookResponse&gt; getBooksWithLowStock() {
+<span class="nc" id="L216">        return bookRepository.findBooksWithLowStock()</span>
+<span class="nc" id="L217">                .stream()</span>
+<span class="nc" id="L218">                .map(BookResponse::new)</span>
+<span class="nc" id="L219">                .collect(Collectors.toList());</span>
+    }
+    
+    /**
+     * Find books by text in title or author
+     */
+    @Transactional(readOnly = true)
+    public List&lt;BookResponse&gt; searchBooks(String searchTerm) {
+<span class="fc" id="L227">        return bookRepository.searchByTitleOrAuthor(searchTerm)</span>
+<span class="fc" id="L228">                .stream()</span>
+<span class="fc" id="L229">                .map(BookResponse::new)</span>
+<span class="fc" id="L230">                .collect(Collectors.toList());</span>
+    }
+    
+    /**
+     * Find books ordered by price ascending
+     */
+    @Transactional(readOnly = true)
+    public List&lt;BookResponse&gt; getBooksOrderedByPriceAsc() {
+<span class="nc" id="L238">        return bookRepository.findAllByOrderByPriceAsc()</span>
+<span class="nc" id="L239">                .stream()</span>
+<span class="nc" id="L240">                .map(BookResponse::new)</span>
+<span class="nc" id="L241">                .collect(Collectors.toList());</span>
+    }
+    
+    /**
+     * Find books ordered by price descending
+     */
+    @Transactional(readOnly = true)
+    public List&lt;BookResponse&gt; getBooksOrderedByPriceDesc() {
+<span class="nc" id="L249">        return bookRepository.findAllByOrderByPriceDesc()</span>
+<span class="nc" id="L250">                .stream()</span>
+<span class="nc" id="L251">                .map(BookResponse::new)</span>
+<span class="nc" id="L252">                .collect(Collectors.toList());</span>
+    }
+    
+    /**
+     * Find books ordered by title
+     */
+    @Transactional(readOnly = true)
+    public List&lt;BookResponse&gt; getBooksOrderedByTitle() {
+<span class="nc" id="L260">        return bookRepository.findAllByOrderByTitleAsc()</span>
+<span class="nc" id="L261">                .stream()</span>
+<span class="nc" id="L262">                .map(BookResponse::new)</span>
+<span class="nc" id="L263">                .collect(Collectors.toList());</span>
+    }
+    
+    /**
+     * Find books ordered by author
+     */
+    @Transactional(readOnly = true)
+    public List&lt;BookResponse&gt; getBooksOrderedByAuthor() {
+<span class="nc" id="L271">        return bookRepository.findAllByOrderByAuthorAsc()</span>
+<span class="nc" id="L272">                .stream()</span>
+<span class="nc" id="L273">                .map(BookResponse::new)</span>
+<span class="nc" id="L274">                .collect(Collectors.toList());</span>
+    }
+    
+    /**
+     * Update stock of a book
+     */
+    public BookResponse updateStock(Long id, Integer newStock) {
+<span class="fc" id="L281">        Book book = bookRepository.findById(id)</span>
+<span class="pc" id="L282">                .orElseThrow(() -&gt; new BookNotFoundException(id));</span>
+        
+<span class="fc" id="L284">        book.setStock(newStock);</span>
+<span class="fc" id="L285">        Book updatedBook = bookRepository.save(book);</span>
+<span class="fc" id="L286">        return new BookResponse(updatedBook);</span>
+    }
+    
+    /**
+     * Check if a book exists by ISBN
+     */
+    @Transactional(readOnly = true)
+    public boolean existsByIsbn(String isbn) {
+<span class="fc" id="L294">        return bookRepository.existsByIsbn(isbn);</span>
+    }
+    
+    /**
+     * Get book statistics by category
+     */
+    @Transactional(readOnly = true)
+    public List&lt;Object[]&gt; getBookStatisticsByCategory() {
+<span class="nc" id="L302">        return bookRepository.countBooksByCategory();</span>
+    }
+    
+    /**
+     * Get average price by category
+     */
+    @Transactional(readOnly = true)
+    public List&lt;Object[]&gt; getAveragePriceByCategory() {
+<span class="nc" id="L310">        return bookRepository.getAveragePriceByCategory();</span>
+    }
+} 
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

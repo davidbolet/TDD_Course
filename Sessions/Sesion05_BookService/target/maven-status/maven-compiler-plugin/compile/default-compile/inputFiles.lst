@@ -1,0 +1,12 @@
+/Users/davidbolet/development/TDD_Course/Sessions/Sesion05_BookService/src/main/java/com/talant/bootcamp/booksservice/BooksserviceApplication.java
+/Users/davidbolet/development/TDD_Course/Sessions/Sesion05_BookService/src/main/java/com/talant/bootcamp/booksservice/config/DataLoader.java
+/Users/davidbolet/development/TDD_Course/Sessions/Sesion05_BookService/src/main/java/com/talant/bootcamp/booksservice/controller/BookController.java
+/Users/davidbolet/development/TDD_Course/Sessions/Sesion05_BookService/src/main/java/com/talant/bootcamp/booksservice/dto/BookRequest.java
+/Users/davidbolet/development/TDD_Course/Sessions/Sesion05_BookService/src/main/java/com/talant/bootcamp/booksservice/dto/BookResponse.java
+/Users/davidbolet/development/TDD_Course/Sessions/Sesion05_BookService/src/main/java/com/talant/bootcamp/booksservice/exception/BookNotFoundException.java
+/Users/davidbolet/development/TDD_Course/Sessions/Sesion05_BookService/src/main/java/com/talant/bootcamp/booksservice/exception/DuplicateIsbnException.java
+/Users/davidbolet/development/TDD_Course/Sessions/Sesion05_BookService/src/main/java/com/talant/bootcamp/booksservice/exception/GlobalExceptionHandler.java
+/Users/davidbolet/development/TDD_Course/Sessions/Sesion05_BookService/src/main/java/com/talant/bootcamp/booksservice/model/Book.java
+/Users/davidbolet/development/TDD_Course/Sessions/Sesion05_BookService/src/main/java/com/talant/bootcamp/booksservice/model/BookCategory.java
+/Users/davidbolet/development/TDD_Course/Sessions/Sesion05_BookService/src/main/java/com/talant/bootcamp/booksservice/repository/BookRepository.java
+/Users/davidbolet/development/TDD_Course/Sessions/Sesion05_BookService/src/main/java/com/talant/bootcamp/booksservice/service/BookService.java

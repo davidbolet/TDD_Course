@@ -1,0 +1,13 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+booksservice,com.talant.bootcamp.booksservice.config,DataLoader,285,0,2,0,25,0,4,0,3,0
+booksservice,com.talant.bootcamp.booksservice.model,BookCategory,0,157,0,0,0,26,0,4,0,4
+booksservice,com.talant.bootcamp.booksservice.model,Book,68,100,12,0,10,41,11,22,5,22
+booksservice,com.talant.bootcamp.booksservice.exception,DuplicateIsbnException,0,5,0,0,0,2,0,1,0,1
+booksservice,com.talant.bootcamp.booksservice.exception,GlobalExceptionHandler.ErrorResponse,20,33,0,0,10,12,5,6,5,6
+booksservice,com.talant.bootcamp.booksservice.exception,GlobalExceptionHandler,30,72,0,0,9,21,2,5,2,5
+booksservice,com.talant.bootcamp.booksservice.exception,BookNotFoundException,4,11,0,0,2,4,1,2,1,2
+booksservice,com.talant.bootcamp.booksservice,BooksserviceApplication,5,3,0,0,2,1,1,1,1,1
+booksservice,com.talant.bootcamp.booksservice.service,BookService,110,269,3,5,35,72,13,20,11,18
+booksservice,com.talant.bootcamp.booksservice.controller,BookController,74,124,0,0,20,33,10,16,10,16
+booksservice,com.talant.bootcamp.booksservice.dto,BookResponse,33,142,0,0,12,44,1,23,1,23
+booksservice,com.talant.bootcamp.booksservice.dto,BookRequest,0,94,0,0,0,32,0,17,0,17

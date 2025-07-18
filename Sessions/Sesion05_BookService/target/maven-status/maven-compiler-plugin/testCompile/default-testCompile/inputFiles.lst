@@ -1,0 +1,5 @@
+/Users/davidbolet/development/TDD_Course/Sessions/Sesion05_BookService/src/test/java/com/talant/bootcamp/booksservice/controller/BookControllerTest.java
+/Users/davidbolet/development/TDD_Course/Sessions/Sesion05_BookService/src/test/java/com/talant/bootcamp/booksservice/integration/BookIntegrationTest.java
+/Users/davidbolet/development/TDD_Course/Sessions/Sesion05_BookService/src/test/java/com/talant/bootcamp/booksservice/integration/SecondBookIntegrationTest.java
+/Users/davidbolet/development/TDD_Course/Sessions/Sesion05_BookService/src/test/java/com/talant/bootcamp/booksservice/repository/BookRepositoryTest.java
+/Users/davidbolet/development/TDD_Course/Sessions/Sesion05_BookService/src/test/java/com/talant/bootcamp/booksservice/service/BookServiceTest.java

@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.talant.bootcamp.booksservice.integration.SecondBookIntegrationTest
+-------------------------------------------------------------------------------
+Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.852 s -- in com.talant.bootcamp.booksservice.integration.SecondBookIntegrationTest

@@ -1,0 +1,13 @@
+com/talant/bootcamp/booksservice/dto/BookRequest.class
+com/talant/bootcamp/booksservice/dto/BookResponse.class
+com/talant/bootcamp/booksservice/exception/GlobalExceptionHandler.class
+com/talant/bootcamp/booksservice/config/DataLoader.class
+com/talant/bootcamp/booksservice/BooksserviceApplication.class
+com/talant/bootcamp/booksservice/exception/BookNotFoundException.class
+com/talant/bootcamp/booksservice/model/Book.class
+com/talant/bootcamp/booksservice/model/BookCategory.class
+com/talant/bootcamp/booksservice/controller/BookController.class
+com/talant/bootcamp/booksservice/service/BookService.class
+com/talant/bootcamp/booksservice/exception/DuplicateIsbnException.class
+com/talant/bootcamp/booksservice/repository/BookRepository.class
+com/talant/bootcamp/booksservice/exception/GlobalExceptionHandler$ErrorResponse.class

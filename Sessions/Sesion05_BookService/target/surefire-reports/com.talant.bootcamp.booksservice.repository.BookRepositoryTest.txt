@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.talant.bootcamp.booksservice.repository.BookRepositoryTest
+-------------------------------------------------------------------------------
+Tests run: 38, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.186 s -- in com.talant.bootcamp.booksservice.repository.BookRepositoryTest

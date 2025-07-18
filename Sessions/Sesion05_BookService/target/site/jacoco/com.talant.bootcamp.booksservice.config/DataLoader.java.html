@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DataLoader.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">booksservice</a> &gt; <a href="index.source.html" class="el_package">com.talant.bootcamp.booksservice.config</a> &gt; <span class="el_source">DataLoader.java</span></div><h1>DataLoader.java</h1><pre class="source lang-java linenums">package com.talant.bootcamp.booksservice.config;
+
+import com.talant.bootcamp.booksservice.model.Book;
+import com.talant.bootcamp.booksservice.model.BookCategory;
+import com.talant.bootcamp.booksservice.repository.BookRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Component;
+
+import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.List;
+
+@Component
+@Profile(&quot;!test&quot;)
+public class DataLoader implements CommandLineRunner {
+    
+    private final BookRepository bookRepository;
+    
+    @Autowired
+<span class="nc" id="L22">    public DataLoader(BookRepository bookRepository) {</span>
+<span class="nc" id="L23">        this.bookRepository = bookRepository;</span>
+<span class="nc" id="L24">    }</span>
+    
+    @Override
+    public void run(String... args) throws Exception {
+        // Only load data if there are no books in the database
+<span class="nc bnc" id="L29" title="All 2 branches missed.">        if (bookRepository.count() == 0) {</span>
+<span class="nc" id="L30">            loadSampleBooks();</span>
+        }
+<span class="nc" id="L32">    }</span>
+    
+    private void loadSampleBooks() {
+<span class="nc" id="L35">        List&lt;Book&gt; sampleBooks = Arrays.asList(</span>
+            new Book(
+                &quot;The Lord of the Rings&quot;,
+                &quot;J.R.R. Tolkien&quot;,
+                &quot;9788445071405&quot;,
+                &quot;An epic fantasy story about the fight against evil&quot;,
+                new BigDecimal(&quot;29.99&quot;),
+<span class="nc" id="L42">                50,</span>
+                BookCategory.FANTASY
+            ),
+            new Book(
+                &quot;1984&quot;,
+                &quot;George Orwell&quot;,
+                &quot;9788497594257&quot;,
+                &quot;A dystopia about totalitarian control&quot;,
+                new BigDecimal(&quot;19.99&quot;),
+<span class="nc" id="L51">                30,</span>
+                BookCategory.FICTION
+            ),
+            new Book(
+                &quot;100 Years of Solitude&quot;,
+                &quot;Gabriel García Márquez&quot;,
+                &quot;9788497592208&quot;,
+                &quot;The story of the Buendía family in Macondo&quot;,
+                new BigDecimal(&quot;24.99&quot;),
+<span class="nc" id="L60">                25,</span>
+                BookCategory.FICTION
+            ),
+            new Book(
+                &quot;The Little Prince&quot;,
+                &quot;Antoine de Saint-Exupéry&quot;,
+                &quot;9788497592796&quot;,
+                &quot;A poetic story about friendship and love&quot;,
+                new BigDecimal(&quot;15.99&quot;),
+<span class="nc" id="L69">                100,</span>
+                BookCategory.CHILDREN
+            ),
+            new Book(
+                &quot;Don Quixote de la Mancha&quot;,
+                &quot;Miguel de Cervantes&quot;,
+                &quot;9788497594258&quot;,
+                &quot;The masterpiece of Spanish literature&quot;,
+                new BigDecimal(&quot;34.99&quot;),
+<span class="nc" id="L78">                20,</span>
+                BookCategory.FICTION
+            ),
+            new Book(
+                &quot;Clean Code&quot;,
+                &quot;Robert C. Martin&quot;,
+                &quot;9780132350884&quot;,
+                &quot;Guide to writing clean and maintainable code&quot;,
+                new BigDecimal(&quot;45.99&quot;),
+<span class="nc" id="L87">                15,</span>
+                BookCategory.TECHNOLOGY
+            ),
+            new Book(
+                &quot;Design Patterns&quot;,
+                &quot;Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides&quot;,
+                &quot;9780201633610&quot;,
+                &quot;Design patterns in object-oriented programming&quot;,
+                new BigDecimal(&quot;55.99&quot;),
+<span class="nc" id="L96">                10,</span>
+                BookCategory.TECHNOLOGY
+            ),
+            new Book(
+                &quot;Steve Jobs&quot;,
+                &quot;Walter Isaacson&quot;,
+                &quot;9788499893404&quot;,
+                &quot;The authorized biography of the co-founder of Apple&quot;,
+                new BigDecimal(&quot;39.99&quot;),
+<span class="nc" id="L105">                35,</span>
+                BookCategory.BIOGRAPHY
+            ),
+            new Book(
+                &quot;Sapiens: De animales a dioses&quot;,
+                &quot;Yuval Noah Harari&quot;,
+                &quot;9788499926223&quot;,
+                &quot;Brief history of humanity&quot;,
+                new BigDecimal(&quot;27.99&quot;),
+<span class="nc" id="L114">                40,</span>
+                BookCategory.HISTORY
+            ),
+            new Book(
+                &quot;El arte de la guerra&quot;,
+                &quot;Sun Tzu&quot;,
+                &quot;9788497594259&quot;,
+                &quot;Chinese military treatise on strategy&quot;,
+                new BigDecimal(&quot;18.99&quot;),
+<span class="nc" id="L123">                60,</span>
+                BookCategory.BUSINESS
+            ),
+            new Book(
+                &quot;The 7 Habits of Highly Effective People&quot;,
+                &quot;Stephen R. Covey&quot;,
+                &quot;9788497594260&quot;,
+                &quot;Guide for personal and professional development&quot;,
+                new BigDecimal(&quot;22.99&quot;),
+<span class="nc" id="L132">                45,</span>
+                BookCategory.SELF_HELP
+            ),
+            new Book(
+                &quot;Cooking for Beginners&quot;,
+                &quot;María García&quot;,
+                &quot;9788497594261&quot;,
+                &quot;Easy and delicious recipes to start cooking&quot;,
+                new BigDecimal(&quot;32.99&quot;),
+<span class="nc" id="L141">                25,</span>
+                BookCategory.COOKING
+            ),
+            new Book(
+                &quot;Traveling in Spain&quot;,
+                &quot;Carlos López&quot;,
+                &quot;9788497594262&quot;,
+                &quot;Complete guide to traveling in Spain&quot;,
+                new BigDecimal(&quot;28.99&quot;),
+<span class="nc" id="L150">                30,</span>
+                BookCategory.TRAVEL
+            ),
+            new Book(
+                &quot;Harry Potter y la piedra filosofal&quot;,
+                &quot;J.K. Rowling&quot;,
+                &quot;9788497594263&quot;,
+                &quot;The first book in the Harry Potter saga&quot;,
+                new BigDecimal(&quot;21.99&quot;),
+<span class="nc" id="L159">                80,</span>
+                BookCategory.YOUNG_ADULT
+            ),
+            new Book(
+                &quot;The Da Vinci Code&quot;,
+                &quot;Dan Brown&quot;,
+                &quot;9788497594264&quot;,
+                &quot;A thriller about a religious mystery&quot;,
+                new BigDecimal(&quot;23.99&quot;),
+<span class="nc" id="L168">                55,</span>
+                BookCategory.THRILLER
+            )
+        );
+        
+<span class="nc" id="L173">        bookRepository.saveAll(sampleBooks);</span>
+<span class="nc" id="L174">        System.out.println(&quot;Loaded &quot; + sampleBooks.size() + &quot; sample books into the database.&quot;);</span>
+<span class="nc" id="L175">    }</span>
+} 
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
