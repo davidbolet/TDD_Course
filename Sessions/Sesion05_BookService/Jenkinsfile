@@ -10,13 +10,13 @@ pipeline {
     stages {
         stage('Build and Test') {
             steps {
-                sh './mvnw clean install'
+                sh './mvn clean install'
             }
         }
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('MySonarQubeServer') {
-                    sh './mvnw sonar:sonar -Dsonar.projectKey=bookservice -Dsonar.login=your_token'
+                    sh './mvn sonar:sonar -Dsonar.projectKey=bookservice -Dsonar.login=your_token'
                 }
             }
         }
