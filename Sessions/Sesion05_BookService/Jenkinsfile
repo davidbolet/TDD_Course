@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {
         maven 'Maven 3.9.11'
-        jdk 'JDK 17'
+        jdk 'JDK_17'
     }
     environment {
         SONAR_SCANNER_OPTS = "-Xmx512m"
