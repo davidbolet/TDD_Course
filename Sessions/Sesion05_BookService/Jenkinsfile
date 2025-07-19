@@ -15,9 +15,9 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 dir('Sessions/Sesion05_BookService') {
-                    withSonarQubeEnv('MySonarQubeServer') {
-                        sh './mvnw sonar:sonar -Dsonar.projectKey=bookservice -Dsonar.login=your_token'
-                    }
+					withSonarQubeEnv('MySonarQubeServer') {
+						sh './mvnw sonar:sonar -Dsonar.projectKey=bookservice -Dsonar.login=sqp_48068eafb53a79ce8cd0ba0f1af2ed75300ab50a -Dsonar.host.url=http://localhost:9000'
+					}
                 }
             }
         }
