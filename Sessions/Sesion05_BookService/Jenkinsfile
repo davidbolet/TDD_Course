@@ -17,7 +17,7 @@ pipeline {
                 dir('Sessions/Sesion05_BookService') {
 					withCredentials([string(credentialsId: 'sonar_token', variable: 'SONAR_TOKEN')]) {
 						withSonarQubeEnv("SonarQube") {
-							sh './mvnw -e sonar:sonar -Dsonar.projectKey=bookservice -Dsonar.login=sqa_42651122dff2f5d68747c4d15a5d4f4dde9dbef3'		
+							sh './mvnw -e sonar:sonar -Dsonar.projectKey=bookservice -Dsonar.login=${SONAR_TOKEN}'		
 						}				
 					}
 				}
