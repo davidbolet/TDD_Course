@@ -15,11 +15,12 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 dir('Sessions/Sesion05_BookService') {
-				withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
-					withSonarQubeEnv("${SONARQUBE}") {
-						sh './mvnw sonar:sonar -Dsonar.projectKey=bookservice -Dsonar.login=${SONAR_TOKEN}'		
-					}				
-                }
+					withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
+						withSonarQubeEnv("${SONARQUBE}") {
+							sh './mvnw sonar:sonar -Dsonar.projectKey=bookservice -Dsonar.login=${SONAR_TOKEN}'		
+						}				
+					}
+				}
             }
         }
     }
