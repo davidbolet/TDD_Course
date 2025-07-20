@@ -15,10 +15,10 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 dir('Sessions/Sesion05_BookService') {
-					sh 'mvn clean verify sonar:sonar \
+					sh './mvnw clean verify sonar:sonar \
   -Dsonar.projectKey=bookservice \
   -Dsonar.host.url=http://localhost:9000 \
-  -Dsonar.login=sqp_48068eafb53a79ce8cd0ba0f1af2ed75300ab50aonar -Dsonar.projectKey=Sesion05_BookService -Dsonar.host.url=http://localhost:9000 -Dsonar.login=admin -Dsonar.password=admin'					
+  -Dsonar.login=sqp_48068eafb53a79ce8cd0ba0f1af2ed75300ab50a'					
                 }
             }
         }
