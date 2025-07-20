@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+    tools {
+        maven 'Maven 3.8.1'
+        jdk 'JDK 17'
+    }
+    environment {
+        SONAR_SCANNER_OPTS = "-Xmx512m"
+    }
+    stages {
+        stage('Build and Test') {
+            steps {
+                sh './mvnw clean install'
+            }
+        }
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('MySonarQubeServer') {
+                    sh './mvnw sonar:sonar -Dsonar.projectKey=bookservice -Dsonar.login=your_token'
+                }
+            }
+        }
+    }
+    post {
+        always {
+            junit '**/target/surefire-reports/*.xml'
+        }
+    }
+}
