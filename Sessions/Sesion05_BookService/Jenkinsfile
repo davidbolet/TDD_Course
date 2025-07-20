@@ -16,7 +16,15 @@ pipeline {
             steps {
                 dir('Sessions/Sesion05_BookService') {
 					withSonarQubeEnv('SonarQube') {
-						sh './mvnw sonar:sonar -Dsonar.projectKey=BookService -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqp_48068eafb53a79ce8cd0ba0f1af2ed75300ab50a'
+						// Run SonarQube analysis
+						// Ensure that the SonarQube server is running and accessible
+						// The sonar_token should be set in Jenkins credentials
+						// and the SonarQube server URL should be configured in Jenkins
+						// This assumes that the SonarQube plugin is installed in Jenkins
+						// and the SonarQube server is properly configured
+						// The project key should match the one configured in SonarQube
+						sh './mvnw sonar:sonar -Dsonar.projectKey=bookservice  -Dsonar.host.url=http://localhost:9000 -Dsonar.login=${SONAR_TOKEN}'
+						
 					}					
                 }
             }
