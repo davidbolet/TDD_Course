@@ -61,23 +61,23 @@
 - Refactoring code with tests as safety net
 - *Exercise:* Improve architecture while keeping tests green
 
-### Session 8 (July 23): Final TDD Workshop
-- Full development of a functionality using TDD
-- Design, coverage, and quality discussion
-- *Exercise:* Complete CRUD using TDD + validations + mocks
-
-### Session 9 (July 24): Contract Testing with Spring Cloud Contract and Pact
+### Session 8 (July 23): Contract Testing with Spring Cloud Contract and Pact
 - What is Contract Testing and Consumer-Driven Contracts
 - Difference between integration tests and contract tests
 - Spring Cloud Contract: stubs, verification
 - Pact: consumer tests, pact files, broker concept
 - *Exercise:* Build a producer REST service, write Pact consumer test, generate pact.json, verify producer, integrate with CI/CD
 
-### Session 10 (July 25): Kafka Testing and Reactive Programming
+### Session 9 (July 24): Kafka Testing and Reactive Programming
 - Introduction to **Spring WebFlux** and **Reactor**
 - Testing `Flux` and `Mono` with `StepVerifier`
 - Kafka flow testing with `EmbeddedKafka`
 - *Exercise:* Build a `Flux` pipeline consuming Kafka messages, test with embedded Kafka and verify with `StepVerifier`
+
+### Session 10 (July 25): Final TDD Workshop
+- Full development of a functionality using TDD
+- Design, coverage, and quality discussion
+- *Exercise:* Complete CRUD using TDD + validations + mocks
 
 ## Materials per Session
 
