@@ -17,6 +17,7 @@ You will:
 
 The following classes should be reviewed:
 
+<<<<<<< HEAD
 - Think about which SOLID principles are violated here and refactor accordingly
 - Add corrsponding Unit tests
 
@@ -25,6 +26,18 @@ The following classes should be reviewed:
 ### 2. `ReviewController`
 
 ### 3. `InventoryAlertService.java`
+=======
+### 1. `ReviewService`
+- Think about which SOLID principles are violated here and refactor accordingly
+- Add Unit tests that ensure correctness
+
+### 2. `ReviewController`
+- Think about which SOLID principles are violated here and refactor accordingly
+- Add corrsponding Unit tests
+
+### 3. `InventoryAlertService.java`
+- Check SOLID principles
+>>>>>>> cb263de700cba079e294d52c2c87f11c935bbcb1
 
 ### 4. `BookOrder.java`
 
@@ -37,7 +50,10 @@ The following classes should be reviewed:
 - Use constructor injection for dependencies
 - Split validation or logic where they should be
 - Make it configurable
+<<<<<<< HEAD
 - (Optional) Create a OrderService to order books
+=======
+>>>>>>> cb263de700cba079e294d52c2c87f11c935bbcb1
 
 ### 🧪 Testing Tasks
 - Write unit tests for new classes and refactored logic
