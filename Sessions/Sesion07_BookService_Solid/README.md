@@ -36,7 +36,7 @@ The following classes should be reviewed:
 - Use constructor injection for dependencies
 - Split validation or logic where they should be
 - Make it configurable
-- (Optional) Create a OrderService to order books
+- (Optional) Create OrderController, OrderService and OrderRepository to order books
 =======
 
 ### 🧪 Testing Tasks
