@@ -15,21 +15,20 @@ You will:
 
 ## 🔎 What to Look At
 
-The following classes contain design issues:
+The following classes should be reviewed:
 
-### 1. `ReviewService.java`
-- Violates **DIP**: Instantiates a concrete repository internally
-- Violates **SRP**: Contains validation and business logic mixed together
+### 1. `ReviewService`
+- Think about which SOLID principles are violated here and refactor accordingly
+- Add Unit tests that ensure correctness
 
-### 2. `ReviewController.java`
-- Violates **DIP**: Instantiates service directly
-- Mixes concerns by managing business logic and HTTP logic
+### 2. `ReviewController`
+- Think about which SOLID principles are violated here and refactor accordingly
+- Add corrsponding Unit tests
 
 ### 3. `InventoryAlertService.java`
-- Violates **OCP**: Hardcoded stock threshold (cannot extend alert logic without modifying the class)
+- Check SOLID principles
 
 ### 4. `BookOrder.java`
-- Violates **SRP**: Contains business logic (`calculateTotal`) inside the model
 
 ---
 
@@ -38,16 +37,14 @@ The following classes contain design issues:
 ### 🧼 Refactor Tasks
 - Extract interfaces where missing
 - Use constructor injection for dependencies
-- Split validation or logic into their own classes
-- Parameterize configurable values (like stock thresholds)
+- Split validation or logic where they should be
+- Make it configurable
 
 ### 🧪 Testing Tasks
-- Write unit tests for:
-  - `ReviewService`
-  - `InventoryAlertService`
-  - Any refactored logic
-- Apply TDD: Write tests **before** each refactor
+- Write unit tests for new classes and refactored logic
+- Apply TDD: Try to write tests **before** each refactor
 - Mock dependencies where applicable
+- Finally, add integration test
 
 ---
 
