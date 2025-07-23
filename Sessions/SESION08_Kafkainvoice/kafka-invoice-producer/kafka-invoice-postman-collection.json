@@ -1,0 +1,92 @@
+{
+  "info": {
+    "name": "Kafka Invoice Producer",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Invoice 1",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"INV-1001\",\n  \"amount\": 99.99,\n  \"customer\": \"Alice Smith\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/invoices",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "invoices"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Create Invoice 2",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"INV-1002\",\n  \"amount\": 199.49,\n  \"customer\": \"Bob Johnson\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/invoices",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "invoices"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Create Invoice 3",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"INV-1003\",\n  \"amount\": 350.0,\n  \"customer\": \"Charlie Davis\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/invoices",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "invoices"
+          ]
+        }
+      }
+    }
+  ]
+}
