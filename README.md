@@ -28,7 +28,7 @@ Each session includes theory, code examples, and exercises.
 2. [Session 2: Test Architecture in Spring Boot](session-02.md)
 3. [Session 3: REST API Testing](session-03.md)
 4. [Session 4: Mocking with Mockito](session-04.md)
-5. [Session 5: Integration and Data Tests](session-05.md)
+5. [Session 5: Integration,Data & Performance Tests](session-05.md)
 6. [Session 6: CI/CD and SonarQube Integration](session-06.md)
 7. [Session 7: Refactoring and Advanced Clean Code](session-07.md)
 8. [Session 8: Contract Testing with Spring Cloud Contract and Pact](session-08.md)
