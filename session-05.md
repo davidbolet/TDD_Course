@@ -7,6 +7,7 @@
 - Run tests with H2 or PostgreSQL.
 - Validate transactional behavior and error handling.
 - Practice writing tests for edge cases and validation logic.
+- Use JMeter to check performance of an API
 
 ---
 
@@ -156,6 +157,9 @@ void shouldSaveValidCustomer() {
 ```
 
 ---
+
+## 6. Performance tests: Jmeter (Check session content)
+
 
 ## Summary
 
